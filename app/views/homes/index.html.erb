@@ -1,0 +1,6 @@
+<%if user_signed_in?%>
+	<h1><%= current_user.username%></h1>
+	<h1><%= link_to 'LogOut', destroy_user_session_path,method: :delete%></h1>
+<%else%>
+	<h2>Please First Login</h2>
+<%end%>

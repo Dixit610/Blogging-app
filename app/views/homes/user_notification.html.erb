@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-md-12">
+		<%@notifications.each do |n|%>
+		<div class="col-md-8 col-md-offset-2 notification-content">
+			<div class="notification-user">
+              <%if n.notifiable.user.profile_image.attached?%>
+                <%= image_tag(n.notifiable.user.profile_image,class:"notification-blog-image")%>
+              <%else%>
+               	<%if n.notifiable.user.gender == 'male' %>    
+                 	<%=image_tag 'man.png',class:"comment-blog-image"%>
+                <%else%>
+                	<%=image_tag 'woman.png',class:"comment-blog-image"%>
+              	<%end%>
+              <%end%>
+            </div>
+             <div class="notification-user-name">
+              <strong><%= n.notifiable.user.username.capitalize%></strong>
+               <h6 class="comment-user-date"><%= n.notifiable.created_at.strftime("%h %e, %Y")%>
+               </h6>
+            
+               <p>
+                <% if n.notifiable_type == "Comment"%>
+                	<%= n.notifiable_type%>ed
+					"<%= n.notifiable.comment%>"
+				<%else%>
+					<%= n.notifiable_type%>d
+				<%end%> 
+				<%=n.notifiable.blog.title%> blog
+               </p>
+              </div>
+			<%#= n.notifiable.blog.title%>
+			<%#= n.likes.blog_id%>
+		</div>
+		<%end%>
+	</div>
+</div>

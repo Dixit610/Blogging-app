@@ -1,0 +1,60 @@
+<nav class="navbar navbar-inverse" style="background:rgba(38,45,61,0.95); box-shadow:0 0 1px rgba(0,0,0,.125), 0 1px 10px rgba(0,0,0,.2);font-color: white;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%=image_tag'blogger.png',class:"symbol-image float-left"%>
+      <%= link_to 'Blogger App',blogs_path,class:"navbar-brand"%>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><%=link_to 'List Blogs ',blogs_path%></li>
+      <li><%= link_to 'New Blog',new_blog_path%></li>
+
+    </ul>
+     <%= form_with(scope: :blog,url: blogs_path,method: :get,html:{class:"navbar-form navbar-left",role:"form"}, local: true) do |form| %>
+      <div class="form-group">     
+         <%= form.text_field :blog_search,value: params[:blog_search],placeholder:"search",class:"form-control" %>
+      </div>
+          <%= form.submit "search",class:"btn btn-default" %>
+   <% end %>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><%= link_to notification_path,{class:"dropdown-toggle", data: {toggle:"dropdown"}},remote: true do%>
+        Notification
+        <% if noti_messages > 0%>
+              <span class="badge badge-notify"><%= noti_messages%></span>
+            <%end%>
+        <%end%>
+        <ul class="dropdown-menu notification-menu" >
+          <li>
+            <%= render "layouts/notification"%>
+        </li>
+        </ul>
+      </li>
+      <li><%#= link_to notification_path do%>
+        Notification
+        <%# if noti_messages > 0%>
+              <span class="badge badge-notify"><%#= noti_messages%></span>
+            <%#end%>
+        <%#end%>
+      </li>
+      <li class="dropdown"><%= link_to "",{class:"dropdown-toggle", data: {toggle:"dropdown"}} do%>
+              <%=current_user.username.capitalize%><span class="caret"></span>
+        <% end %>
+       
+        <ul class="dropdown-menu" >
+           <li><%=link_to profile_path do %>
+                <i class="glyphicon glyphicon-user"></i> Profile
+                <%end%>             
+           </li>
+           <li><%=link_to edit_user_registration_path do %>
+                <i class="glyphicon glyphicon-user"></i> Edit Profile
+                <%end%>             
+           </li>
+          <li><%= link_to destroy_user_session_path,method:"delete" do%>
+                <i class="glyphicon glyphicon-log-out"></i> Logout
+              <%end%>            
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+  
