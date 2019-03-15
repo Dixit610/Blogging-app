@@ -19,7 +19,7 @@
 </div>
 <div class="row">
 	<%@blogs.each_with_index do |data,index|%>
-
+		<%= link_to blog_path(data) do%>
 		<div class="col-xs-4">
 			<div class="well well-lg blog-well"  style="height: 200px;">
 				<div class="blog-title">
@@ -35,6 +35,6 @@
 				</div>
 			</div>
 		</div>
-
+		<%end%>
 	<%end%>
 </div>

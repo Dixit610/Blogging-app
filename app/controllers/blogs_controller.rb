@@ -1,11 +1,12 @@
 class BlogsController < ApplicationController
-	before_action :authenticate_user!,only:[:new,:edit]
+	before_action :authenticate_user!,only:[:new,:edit,:create,:update,:destroy]
 	def index
+		@departments = Department.all
 		if detail=params[:blog]
 	      #@blogs = Blog.connection.execute("SELECT * FROM blogs WHERE (title LIKE '%#{detail[:search]}%')")
 	      @blogs=Blog.where("title LIKE ? OR description LIKE ?","%#{detail[:blog_search].capitalize}%","%#{detail[:blog_search]}%").order(updated_at: :desc)
-	    # elsif params[:department]
-	      # @blogs = department_wish(params[:department][:department_id])
+	     elsif params[:department]
+	       @blogs = department_wish(params[:department][:department_id])
 	    else
 	      @blogs = Blog.all.order(updated_at: :desc)
 	    end
@@ -56,6 +57,11 @@ class BlogsController < ApplicationController
 	private
 
 	def blog_params
-		params.require(:blog).permit(:title,:description,:user_id,:blog_image)
+		params.require(:blog).permit(:title,:description,:user_id,:department_id,:blog_image)
+	end
+
+	def department_wish(dep_id)
+	    @department = Department.find(dep_id)
+	    return @department.blogs.order(updated_at: :desc)
 	end
 end

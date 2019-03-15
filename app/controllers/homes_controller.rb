@@ -7,7 +7,7 @@ class HomesController < ApplicationController
 	def user_profile
 
             @user=User.find(current_user.id)
-            @blogs = Blog.select(:id,:title,:description).where("user_id=?",current_user.id)
+            @blogs = Blog.select(:id,:title,:description).where("user_id=?",current_user.id).order(updated_at: :desc)
     end
     def user_notification
         @notifications = Notification.all.where(user_id: current_user.id)

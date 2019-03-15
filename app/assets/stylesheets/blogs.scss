@@ -53,6 +53,16 @@ footer ul li{
 {
 	margin-top:0px;
 }
+.blog-image
+{
+padding:0px;
+}
+.blog-image-img
+{
+	height:200px;
+	width:389px;
+	padding:0px;
+}
 .blog_title
 {
 	margin-bottom:30px;
@@ -107,6 +117,20 @@ footer ul li{
 	border-radius:5px;
 	margin-top:3%;
 	padding:0px;
+	height:420px;
+	
+}
+.index-blog:hover
+{
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.blog-row
+{
+	height:450px;
+}
+.blog-index-title
+{
+	color:#7b7676;	
 }
 .blog-user{
 	height:81px;
@@ -153,7 +177,7 @@ footer ul li{
 {
 	color:#757575;
 	height:50px;
-	padding-left:80%;
+	padding-left:60%;
 	padding-top:2%;
 }
 .profile-blog-image
@@ -249,7 +273,7 @@ footer ul li{
 .department-list
 {
 	box-shadow:0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
-	margin-top:2.5%;
+	margin-top:1%;
 	border-radius:5px;
 	padding:0px;
 }
@@ -305,7 +329,17 @@ th{
 .badge-notify
 {
 	background:red;
+	position:absolut;
+	top:50px;
 }
+.badge-notify-div
+{
+	margin-left: 44px;
+    position: absolute;
+    top: 8px;
+    left: 39px;
+}
+
 .notification-content
 {
 	margin-bottom:10px;

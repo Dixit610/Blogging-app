@@ -1,3 +1,5 @@
+  
+
    <%current_user.notifications.order(created_at: :desc).each do |n|%>
               <div class="col-md-12 notification-content">
                 <div class="notification-user">
@@ -30,3 +32,4 @@
                   <%#= n.likes.blog_id%>
               </div>
              <%end%>
+    

@@ -6,6 +6,8 @@ class Like < ApplicationRecord
 	after_create :create_notification
 
 	def create_notification
-		self.notifications.create(user_id: self.blog.user.id)
+		if self.user_id != current_user.id
+			self.notifications.create(user_id: self.blog.user.id)
+		end
 	end
 end

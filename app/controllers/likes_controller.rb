@@ -7,6 +7,9 @@ class LikesController < ApplicationController
           if @like_check == nil
 
             @like = @blog.likes.create(like_params.merge(user_id: current_user.id))
+            if @like.user_id !=  @like.blog.user.id
+                @like.notifications.create(user_id: @like.blog.user.id)
+            end
             redirect_to blog_path(@blog)  
           else   
             flash[:danger]="Already liked this blog....."

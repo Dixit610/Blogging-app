@@ -16,24 +16,19 @@
           <%= form.submit "search",class:"btn btn-default" %>
    <% end %>
     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown"><%= link_to notification_path,{class:"dropdown-toggle", data: {toggle:"dropdown"}},remote: true do%>
+      <li class="dropdown"><%= link_to notification_path,onclick:'readNotification()',class:"dropdown-toggle", data: {toggle:"dropdown"} do%>
         Notification
+        <div class="badge-notify-div" id="count">
         <% if noti_messages > 0%>
               <span class="badge badge-notify"><%= noti_messages%></span>
-            <%end%>
+        <%end%>
+      </div>
         <%end%>
         <ul class="dropdown-menu notification-menu" >
           <li>
-            <%= render "layouts/notification"%>
+            <%=render "layouts/notification"%>
         </li>
         </ul>
-      </li>
-      <li><%#= link_to notification_path do%>
-        Notification
-        <%# if noti_messages > 0%>
-              <span class="badge badge-notify"><%#= noti_messages%></span>
-            <%#end%>
-        <%#end%>
       </li>
       <li class="dropdown"><%= link_to "",{class:"dropdown-toggle", data: {toggle:"dropdown"}} do%>
               <%=current_user.username.capitalize%><span class="caret"></span>

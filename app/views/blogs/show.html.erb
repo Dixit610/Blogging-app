@@ -23,9 +23,9 @@
       </div>
       <div class="col-xs-12 blog-image-show">
           <%if @blog.blog_image.attached?%>
-            <%= image_tag(@blog.blog_image,class:"col-xs-12 blog-image-show1")%>
+            <%= image_tag(@blog.blog_image,class:"col-xs-12 blog-image-show1  ")%>
             <%puts "====================="%>
-            <%puts @blog.blog_image%>
+            <%puts @blog.blog_image.variant(resize: "100x100")%>
           <%end%>
         </div>
         <div class="well col-xs-12">
@@ -79,7 +79,7 @@
          <div class="comment-form col-xs-12">
              <%=form_with model: [@blog,@blog.comments.build],local: true do|form|%>
                 <div class="col-xs-9"> 
-                 <%= form.text_field :comment,placeholder:"Add comment here..",class:"form-control"%>
+                 <%= form.text_area :comment,placeholder:"Add comment here..",class:"form-control"%>
                 </div>
                 <div class="col-xs-3">
                  <%= form.submit "Comment",class:"btn btn-sm btn-defult " %>
